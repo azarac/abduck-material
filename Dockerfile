@@ -21,5 +21,3 @@ WORKDIR /app
 
 # Streamlitを実行
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
-
-ENV MECABRC=/etc/mecabrc
