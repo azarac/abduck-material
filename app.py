@@ -1,14 +1,26 @@
 import os
-import re
-import io
-import zipfile
-import string
-import pandas as pd
+import platform
 import streamlit as st
+import pandas as pd
+import re
+import zipfile
+import io
 import MeCab
+import string
 
-# MeCabの準備
-mecab = MeCab.Tagger("-r /etc/mecabrc -Ochasen")
+# 環境に応じて mecabrc のパスを決定する
+# 環境変数 MECABRC が設定されていればそちらを使用
+mecabrc_path = os.environ.get("MECABRC")
+if not mecabrc_path:
+    # macOS の場合は Homebrew 経由でインストールしている場合
+    if platform.system() == "Darwin":
+        mecabrc_path = "/opt/homebrew/etc/mecabrc"
+    else:
+        # Linux (Heroku など) の場合
+        mecabrc_path = "/etc/mecabrc"
+
+# MeCab の初期化（-r オプションで設定ファイルのパスを指定）
+mecab = MeCab.Tagger(f"-r {mecabrc_path} -Ochasen")
 
 # 役職リスト（よくある役職名を追加）
 job_titles = ["代表", "取締役", "部長", "社長", "専務", "理事", "監査役", "役員", 
@@ -116,7 +128,7 @@ def split_sentences(text):
     ]
     return sentences
 
-# **セルの途中でファイルが分かれないように調整する分割処理**
+# **セルの途中で分割しないように調整する分割処理**
 def save_processed_text(sentences, output_dir):
     file_paths = []
     os.makedirs(output_dir, exist_ok=True)
@@ -195,6 +207,8 @@ def main():
             # ダウンロードボタン（ユーザーが入力したファイル名を使用）
             st.download_button("処理結果をダウンロード", zip_file, download_filename, mime="application/zip")
 
-# Heroku対応: ポートを指定して起動
 if __name__ == "__main__":
+    # Heroku では Procfile で起動するので、ローカルテストの場合は通常通り実行する
+    # ここではローカル環境のテストのために、以下の行を残します。
+    # Heroku 用には、Procfile の内容に従って起動されます。
     main()
