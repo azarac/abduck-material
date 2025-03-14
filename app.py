@@ -8,7 +8,7 @@ import streamlit as st
 import MeCab
 
 # MeCabの準備
-mecab = MeCab.Tagger("-Ochasen")
+mecab = MeCab.Tagger("-r /etc/mecabrc -Ochasen")
 
 # 役職リスト（よくある役職名を追加）
 job_titles = ["代表", "取締役", "部長", "社長", "専務", "理事", "監査役", "役員", 
