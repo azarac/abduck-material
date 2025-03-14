@@ -157,7 +157,7 @@ def create_zip_from_files(file_paths):
 
 # メイン処理
 def main():
-    st.title("abduck material ver.1")
+    st.title("digduck")
 
     uploaded_file = st.file_uploader("CSVファイルをアップロード", type=["csv"])
     if uploaded_file is not None:
