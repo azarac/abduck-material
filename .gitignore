@@ -1,13 +1,13 @@
-# macOS のシステムファイル
+# macOS system files
 .DS_Store
 .CFUserTextEncoding
 
-# 一時ファイルやキャッシュ
+# Temporary files or folders
 *.pyc
 __pycache__/
-
-# ユーザーディレクトリや設定ファイル
 .Trash/
+
+# User-specific files (ignore these if not needed in repo)
 .adobe/
 .android/
 .cups/
@@ -24,7 +24,7 @@ __pycache__/
 .zsh_history
 .zsh_sessions/
 
-# その他、不要なファイル・ディレクトリ
+# Other directories that are not part of the project
 Applications/
 Desktop/
 Documents/
@@ -35,4 +35,4 @@ Music/
 Pictures/
 Projects/
 Public/
-Resolve Project Library/
+"Creative Cloud Files Personal Account *"
