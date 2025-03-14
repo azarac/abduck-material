@@ -1,0 +1,38 @@
+# macOS のシステムファイル
+.DS_Store
+.CFUserTextEncoding
+
+# 一時ファイルやキャッシュ
+*.pyc
+__pycache__/
+
+# ユーザーディレクトリや設定ファイル
+.Trash/
+.adobe/
+.android/
+.cups/
+.docker/
+.dvdcss/
+.idlerc/
+.local/
+.netrc
+.python_history
+.ssh/
+.streamlit/
+.viminfo
+.zprofile
+.zsh_history
+.zsh_sessions/
+
+# その他、不要なファイル・ディレクトリ
+Applications/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Projects/
+Public/
+Resolve Project Library/
